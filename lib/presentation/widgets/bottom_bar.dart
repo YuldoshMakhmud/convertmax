@@ -1,5 +1,5 @@
 import 'package:convermax/presentation/screens/currency/currency_page.dart';
-import 'package:convermax/presentation/screens/exel/exel_page.dart';
+import 'package:convermax/presentation/screens/exel/pdf_page.dart';
 import 'package:convermax/presentation/screens/lotin_kiril/lotin_kiril_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _BottomNavigationBarExampleState
       style: optionStyle,
     ),
     CurrencyPage(),
-    ExelPage(),
+    PdfPage(),
     LotinKiril(),
   ];
 

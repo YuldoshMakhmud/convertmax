@@ -9,7 +9,7 @@ class CurrencyPage extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CurrencyForm(), // Kiritish va natijani ko'rsatish uchun widget
+        child: CurrencyForm(),
       ),
     );
   }
