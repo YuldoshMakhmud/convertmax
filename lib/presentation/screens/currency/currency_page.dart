@@ -1,4 +1,4 @@
-import 'package:convermax/presentation/widgets/currency_form.dart';
+import 'package:convermax/presentation/widgets/currency_widget/currency_form.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyPage extends StatelessWidget {
@@ -7,8 +7,11 @@ class CurrencyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(
+        title: const Text("Currency"),
+      ),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: CurrencyForm(),
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:convermax/presentation/widgets/lotin_kiril_converter.dart';
+import 'package:convermax/presentation/widgets/lotin_kiril_widget/lotin_kiril_converter.dart';
 import 'package:flutter/material.dart';
 
 class LotinKiril extends StatefulWidget {
@@ -16,12 +16,15 @@ class _LotinKirilState extends State<LotinKiril> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Lotin & Kiril"),
+      ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Matnni kiriting",
               ),
@@ -33,7 +36,7 @@ class _LotinKirilState extends State<LotinKiril> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SwitchListTile(
               title:
                   Text(isToCyrillic ? "Lotindan Kirilga" : "Kirildan Lotinga"),
@@ -46,15 +49,15 @@ class _LotinKirilState extends State<LotinKiril> {
                 });
               },
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               "Natija:",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               outputText,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ],
         ),

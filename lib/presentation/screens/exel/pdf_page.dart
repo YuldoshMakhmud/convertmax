@@ -1,6 +1,9 @@
-import 'package:convermax/presentation/widgets/pdf_picker_button.dart';
-import 'package:convermax/presentation/widgets/pdf_viwer.dart';
+import 'package:convermax/presentation/widgets/exel_widgets/exel_picker_button.dart';
+import 'package:convermax/presentation/widgets/exel_widgets/exel_viewer.dart';
+import 'package:convermax/presentation/widgets/pdf_widgets/pdf_picker_button.dart';
+import 'package:convermax/presentation/widgets/pdf_widgets/pdf_viwer.dart';
 import 'package:flutter/material.dart';
+// Excel ko'rish uchun import
 
 class PdfPage extends StatefulWidget {
   const PdfPage({super.key});
@@ -10,30 +13,49 @@ class PdfPage extends StatefulWidget {
 }
 
 class _PdfPageState extends State<PdfPage> {
-  String? _filePath; // Fayl yo'li uchun o'zgaruvchi
+  String? _pdfFilePath; // PDF Fayl yo'li uchun o'zgaruvchi
+  String? _excelFilePath; // Excel Fayl yo'li uchun o'zgaruvchi
 
-  void _onFilePicked(String? filePath) {
+  void _onPdfFilePicked(String? filePath) {
     setState(() {
-      _filePath = filePath;
+      _pdfFilePath = filePath;
+    });
+  }
+
+  void _onExcelFilePicked(String? filePath) {
+    setState(() {
+      _excelFilePath = filePath;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Pdf & Exel"),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PdfPickerButton(onFilePicked: _onFilePicked), // PDF yuklash tugmasi
+            PdfPickerButton(
+                onFilePicked: _onPdfFilePicked), // PDF yuklash tugmasi
+            ExcelPickerButton(
+                onFilePicked: _onExcelFilePicked), // Excel yuklash tugmasi
             const SizedBox(height: 20),
-            // PDF fayl tanlangan bo'lsa, uni ko'rsatadi
-            _filePath != null
+            // PDF yoki Excel fayl tanlangan bo'lsa, ularni ko'rsatadi
+            _pdfFilePath != null
                 ? Expanded(
-                    child:
-                        PdfViewer(filePath: _filePath!), // PDF ko'ruvchi vidjet
+                    child: PdfViewer(
+                        filePath: _pdfFilePath!), // PDF ko'ruvchi vidjet
                   )
-                : const Text('Iltimos, PDF faylni yuklang.'),
+                : _excelFilePath != null
+                    ? Expanded(
+                        child: ExcelViewer(
+                            filePath:
+                                _excelFilePath!), // Excel ko'ruvchi vidjet
+                      )
+                    : const Text('Iltimos, PDF yoki Excel faylni yuklang.'),
           ],
         ),
       ),

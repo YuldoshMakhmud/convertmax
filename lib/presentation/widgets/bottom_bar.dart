@@ -1,5 +1,6 @@
 import 'package:convermax/presentation/screens/currency/currency_page.dart';
 import 'package:convermax/presentation/screens/exel/pdf_page.dart';
+import 'package:convermax/presentation/screens/home/home_ceter.dart';
 import 'package:convermax/presentation/screens/lotin_kiril/lotin_kiril_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +15,9 @@ class BottomNavigationBarExample extends StatefulWidget {
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    HomeCenter(), // HomeCenter birinchi ekran sifatida qo'shildi
     CurrencyPage(),
     PdfPage(),
     LotinKiril(),

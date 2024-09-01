@@ -7,7 +7,7 @@ class CurrencyResult extends StatelessWidget {
 
   CurrencyResult({required this.currency, required this.enteredValue});
 
-  // Kiritilgan miqdorga ko'ra valyutani hisoblash funksiyasi
+  // resultni kurish funksiya
   double _calculateCurrency(String cbPrice) {
     double price = double.tryParse(cbPrice) ?? 0.0;
     return price * enteredValue;
@@ -17,7 +17,7 @@ class CurrencyResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -25,15 +25,15 @@ class CurrencyResult extends StatelessWidget {
           children: [
             Text(
               'Selected Currency: ${currency.title}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text('Code: ${currency.code}'),
             Text('Date: ${currency.date}'),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'Calculated Value: ${_calculateCurrency(currency.cbPrice).toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 16, color: Colors.blueAccent),
+              style: const TextStyle(fontSize: 16, color: Colors.blueAccent),
             ),
           ],
         ),

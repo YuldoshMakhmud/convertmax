@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'currency_result.dart'; // resultni kurib qilishim uchun
 
 class CurrencyForm extends StatefulWidget {
+  const CurrencyForm({super.key});
+
   @override
   _CurrencyFormState createState() => _CurrencyFormState();
 }
@@ -35,25 +37,25 @@ class _CurrencyFormState extends State<CurrencyForm> {
         TextFormField(
           controller: _amountController,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Enter amount',
             border: OutlineInputBorder(),
           ),
           onChanged: _updateEnteredValue,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         FutureBuilder<List<Currency>>(
           future: currencies,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text('No data available'));
+              return const Center(child: Text('No data available'));
             } else {
               return DropdownButton<Currency>(
-                hint: Text('Select a currency'),
+                hint: const Text('Select a currency'),
                 value: selectedCurrency,
                 isExpanded: true,
                 items: snapshot.data!.map((currency) {
@@ -71,7 +73,7 @@ class _CurrencyFormState extends State<CurrencyForm> {
             }
           },
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         if (selectedCurrency != null)
           CurrencyResult(
             currency: selectedCurrency!,
